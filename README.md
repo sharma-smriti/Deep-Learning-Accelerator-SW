@@ -126,7 +126,8 @@ Key takeaways:
 See [operators/README.md](operators/README.md) for details on ONNX operators already supported on DLA and planned to be supported in future releases.
 
 ## Setup
-Install the Python dependencies with (only supported on x86 hosts):
+The Python scripts in this repo run on a host machine. Install the dependencies for `operators/` and `scripts/prepare_models/` from the repo root with:
 ```bash
-python3 -m pip install requirements.txt
+python3 -m pip install -r requirements.txt
 ```
+The QDQ Translator has its own requirements, see [tools/qdq-translator/README.md](tools/qdq-translator/README.md#install-requirements).

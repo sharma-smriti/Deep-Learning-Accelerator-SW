@@ -82,7 +82,7 @@ If you are interested in a specific DLA operator to be enabled in TensorRT, feel
 | InstanceNormalization            | [See RFE](#request-for-enhancements-rfe)      | Reconstruction (as of DLA 3.14.0) | Can be expressed with ReduceMean, Sub, Pow, Add, Sqrt, Div, Mul
 | LayerNormalization            | [See RFE](#request-for-enhancements-rfe)      | Reconstruction (as of DLA 3.14.0) | Can be expressed with ReduceMean, Sub, Pow, Add, Sqrt, Div, Mul
 | LeakyRelu                 | Native          | Native | See **Activation layer** in [Layer Support and Restrictions](https://docs.nvidia.com/deeplearning/tensorrt/developer-guide/index.html#dla-lay-supp-rest)
-| Less                      | Native (as of TensorRT 8.6.12)          | Native (as of DLA 3.14.0) | See **Comparison operations** in [Layer Support and Restrictions]
+| Less                      | Native (as of TensorRT 8.6.12)          | Native (as of DLA 3.14.0) | See **Comparison operations** in [Layer Support and Restrictions](https://docs.nvidia.com/deeplearning/tensorrt/developer-guide/index.html#dla-lay-supp-rest)
 | LessOrEqual               | [See RFE](#request-for-enhancements-rfe)          | Native (as of DLA 3.14.0) |
 | Log                       | [See RFE](#request-for-enhancements-rfe)          | Native (as of DLA 3.14.0) |
 | LogSoftmax                       | [See RFE](#request-for-enhancements-rfe)          | Reconstruction (as of DLA 3.14.0) | Can be expressed with Log and Softmax
@@ -103,11 +103,10 @@ If you are interested in a specific DLA operator to be enabled in TensorRT, feel
 | Not                       | Reconstruction          | Reconstruction | See [op_reconstruction/Not.py](op_reconstruction/Not.py)
 | Or                        | Reconstruction          | Reconstruction | See [op_reconstruction/Or.py](op_reconstruction/Or.py)
 | Pad                       | [See RFE](#request-for-enhancements-rfe)          | Native (as of DLA 3.14.0) |
-| Div                       | Native (as of TensorRT 8.6.12) | Native (as of DLA 3.14.0) | See **ElementWise layer** in [Layer Support and Restrictions](https://docs.nvidia.com/deeplearning/tensorrt/developer-guide/index.html#dla-lay-supp-rest)
 | PRelu                     | Native          | Native | See **Parametric ReLU layer** in [Layer Support and Restrictions](https://docs.nvidia.com/deeplearning/tensorrt/developer-guide/index.html#dla-lay-supp-rest)
 | QuantizeLinear          | Reconstruction          | Reconstruction | Can be collapsed to INT8 scaling factor, switching from explicit to implicit quantization	
 | Reciprocal                | [See RFE](#request-for-enhancements-rfe)          | Native (as of DLA 3.14.0) |
-| GlobalMaxPool             | Native (as of TensorRT 8.6.12)          | Native | See **Reduce layer** in [Layer Support and Restrictions](https://docs.nvidia.com/deeplearning/tensorrt/developer-guide/index.html#dla-lay-supp-rest). Older releases: Can be reconstructed by decomposing into several MaxPool nodes.
+| ReduceMax                 | Native (as of TensorRT 8.6.12)          | Native | See **Reduce layer** in [Layer Support and Restrictions](https://docs.nvidia.com/deeplearning/tensorrt/developer-guide/index.html#dla-lay-supp-rest). Older releases: Can be reconstructed by decomposing into several MaxPool nodes.
 | ReduceMean                | [See RFE](#request-for-enhancements-rfe)          | Native| Can be reconstructed by decomposing into several AveragePool or Conv nodes
 | ReduceMin                 | [See RFE](#request-for-enhancements-rfe)          | Native|
 | ReduceLogSum                       | [See RFE](#request-for-enhancements-rfe)          | Reconstruction (as of DLA 3.14.0) | Can be expressed with Log, ReduceSum and Exp

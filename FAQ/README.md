@@ -11,6 +11,7 @@
 - [How does FP16 performance compare to INT8?](#how-does-fp16-performance-compare-to-int8)
 - [How do you quantize the network to INT8 for DLA?](#how-do-you-quantize-the-network-to-int8-for-dla)
 - [Is a calibration file always necessary to convert a model to INT8?](#is-a-calibration-file-always-necessary-to-convert-a-model-to-int8)
+- [How would I go about using DLA without TensorRT?](#how-would-i-go-about-using-dla-without-tensorrt)
 - [Is ONNX the recommended way to go from PyTorch to TensorRT?](#is-onnx-the-recommended-way-to-go-from-pytorch-to-tensorrt)
 - [What's the difference between Dense TOPs and Sparse TOPS?](#whats-the-difference-between-dense-tops-and-sparse-tops)
 - [Can we scale the clock frequency on DLA?](#can-we-scale-the-clock-frequency-on-dla)
@@ -19,11 +20,12 @@
 - [How does the inference latency on DLA compare to that of GPU?](#how-does-the-inference-latency-on-dla-compare-to-that-of-gpu)
 - [Is it possible to run multiple networks concurrently on two DLA cores?](#is-it-possible-to-run-multiple-networks-concurrently-on-two-dla-cores)
 - [Can multiple models run on a single DLA?](#can-multiple-models-run-on-a-single-dla)
-- [Can I expect the latency of my network to be deterministic on DLA?](#Can-I-expect-the-latency-of-my-network-to-be-deterministic-on-DLA)
+- [Can I expect the latency of my network to be deterministic on DLA?](#can-i-expect-the-latency-of-my-network-to-be-deterministic-on-dla)
 - [What tools and utilities are available for profiling and debugging DLA workloads?](#what-tools-and-utilities-are-available-for-profiling-and-debugging-dla-workloads)
 - [Will DLA help in reducing power consumption?](#will-dla-help-in-reducing-power-consumption)
 - [Where can we learn more about how DLA is leveraged in ISAAC reference applications?](#where-can-we-learn-more-about-how-dla-is-leveraged-in-isaac-reference-applications)
 - [What does "CBUF validation" mean if I try to run a Convolution on DLA through TensorRT?](#what-does-cbuf-validation-mean-if-i-try-to-run-a-convolution-on-dla-through-tensorrt)
+- [Are inputs in kDLA_HWC4 format supported if consumed by a Convolution whose compute precision differs from the inputs'?](#are-inputs-in-kdla_hwc4-format-supported-if-consumed-by-a-convolution-whose-compute-precision-differs-from-the-inputs)
 - [I am running into an issue on my DLA, what do I do?](#i-am-running-into-an-issue-on-my-dla-what-do-i-do)
 
 ### Which NVIDIA Jetson or DRIVE Modules have DLA?

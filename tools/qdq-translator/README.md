@@ -22,7 +22,7 @@ trtexec --onnx=translated/${MODEL}_noqdq.onnx \
         --saveEngine=${MODEL}.engine \
         --precisionConstraints=prefer \
         --layerPrecisions=$(cat translated/${MODEL}_precision_config_layer_arg.txt) \
-        [--allowGPUFallback OR --inputIOFormats=int8:hwc4 --outputIOFormats=fp16:chw16]
+        [--allowGPUFallback OR --inputIOFormats=int8:dla_hwc4 --outputIOFormats=fp16:chw16]
 ```
 
 ## Getting started
@@ -67,9 +67,11 @@ optional arguments:
 ```
 
 ### Install requirements
+From this directory:
 ```bash
-python3 -m pip install -r ../../requirements.txt
+python3 -m pip install -r requirements.txt
 ```
+`onnxoptimizer` is pinned to 0.3.2 (see [Known issues](#known-issues)), which only publishes wheels for Python 3.7 to 3.9, so use one of those Python versions.
 
 ### Workflow
 **Assumptions**
@@ -85,7 +87,7 @@ python3 -m pip install -r ../../requirements.txt
 ```bash
 python3 qdq_translator.py --input_onnx_models ${MODEL}.onnx --output_dir ./translated --add_unary_ew_scales_for_dla
 ```
-See [Why is `--add_unary_ew_scales_for_dla` needed?](###why-is-add_unary_ew_scales_for_dla-needed) for a detailed explanation on the trailing argument.
+See [Why is `--add_unary_ew_scales_for_dla` needed?](#why-is---add_unary_ew_scales_for_dla-needed) for a detailed explanation on the trailing argument.
 
 3. Inspect the resulting model `translated/model_noqdq.onnx` (without Q/DQ nodes) and the int8 scaling factors + tensors that need to be in fp16 in `translated/model_precision_config.json`. A calibration cache file and the argument for `--layerPrecisions`, for use with `trtexec`, are exported as `translated/model_precision_config_calib.cache` and `translated/model_precision_config_layer_arg.txt`, respectively.
 
@@ -100,7 +102,7 @@ trtexec --onnx=translated/${MODEL}_noqdq.onnx \
         --saveEngine=${MODEL}.engine \
         --precisionConstraints=prefer \
         --layerPrecisions=$(cat translated/${MODEL}_precision_config_layer_arg.txt) \
-        [--allowGPUFallback OR --inputIOFormats=int8:hwc4 --outputIOFormats=fp16:chw16]
+        [--allowGPUFallback OR --inputIOFormats=int8:dla_hwc4 --outputIOFormats=fp16:chw16]
 ```
 `${MODEL}_noqdq_precision_config_layer_arg.txt` is generated in the previous step, and it's in the format `layer_name_1:fp16,layer_name_2:fp16,...`.
 

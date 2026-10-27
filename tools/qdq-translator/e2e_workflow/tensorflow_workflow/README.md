@@ -35,7 +35,7 @@ cd ../.. && python3 qdq_translator.py -i ./models/resnet_50v1.onnx -o ./translat
 ```
 
 ### For running on DLA (not compatible with GPU)
- Add `--add_unary_ew_scales_for_dla` (see [Why is `--add_unary_ew_scales_for_dla` needed?](../README.md#why-is---add_unary_ew_scales_for_dla-needed) for details):
+ Add `--add_unary_ew_scales_for_dla` (see [Why is `--add_unary_ew_scales_for_dla` needed?](../../README.md#why-is---add_unary_ew_scales_for_dla-needed) for details):
 ```
 cd ../.. && python3 qdq_translator.py -i ./models/resnet_50v1.onnx -o ./translated --add_unary_ew_scales_for_dla && cd -
 ```
@@ -47,7 +47,7 @@ Calculate the Converted models' accuracy:
 ```
 
 ### 5. Run model on DLA without GPU fallback
-Follow the steps in [ResNet-50 with QDQ Translator](../../../scripts/prepare_models/README.md#resnet-50-with-qdq-translator) (requires `--add_unary_ew_scales_for_dla`).
+Follow the steps in [ResNet-50 with QDQ Translator](../../../../scripts/prepare_models/README.md#resnet-50-with-qdq-translator) (requires `--add_unary_ew_scales_for_dla`).
 
 ## Results
 ### ImageNet Top-1 accuracy with TensorRT 8.6-EA (on NVIDIA GeForce RTX™ 3090)
