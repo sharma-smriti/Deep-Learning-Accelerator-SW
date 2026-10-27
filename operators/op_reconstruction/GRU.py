@@ -407,7 +407,7 @@ class GRU(Operator):
         if patched:
             graph.cleanup().toposort()
             patched_path = 'tmp.onnx'
-            onnx.save(gs.export_onnx(graph), patched_path)
+            onnx.save(Operator.export_onnx(graph), patched_path)
         return patched_path
 
     def run_comparison(self,

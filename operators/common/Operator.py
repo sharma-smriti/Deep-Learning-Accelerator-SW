@@ -87,6 +87,14 @@ class Operator():
         return result
 
     @staticmethod
+    def export_onnx(graph):
+        model = gs.export_onnx(graph)
+        # Newer onnx releases default to an IR version that onnxruntime may not support yet, so use the
+        # lowest IR version compatible with the model's opsets.
+        model.ir_version = onnx.helper.find_min_ir_version_for(model.opset_import)
+        return model
+
+    @staticmethod
     def save_gs_graph(graph,
                       top_dir='./models',
                       run_shape_inference=False,
@@ -98,7 +106,7 @@ class Operator():
             for node in graph.nodes:
                 for out in node.outputs:
                     out.shape = None
-        model = gs.export_onnx(graph)
+        model = Operator.export_onnx(graph)
         if run_shape_inference:
             model = shape_inference.infer_shapes(model)
         os.makedirs(top_dir, exist_ok=True)
