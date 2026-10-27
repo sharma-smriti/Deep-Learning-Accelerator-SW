@@ -86,6 +86,10 @@ def fuse_convs_horizontally(graph, fuse_conv_outputs, new_names=None):
             graph.outputs.remove(conv.outputs[0])
             conv.inputs.clear()
             conv.outputs.clear()
+        # Keep the declared output shape in sync with the fused number of output channels.
+        fused_output = first_conv.outputs[0]
+        if fused_output.shape is not None:
+            fused_output.shape = [fused_output.shape[0], first_weights.shape[0], *fused_output.shape[2:]]
         graph.cleanup()
     if new_names is not None:
         assert len(new_names) == len(fuse_conv_outputs)
